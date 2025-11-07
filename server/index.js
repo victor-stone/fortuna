@@ -114,22 +114,22 @@ app.get("/:name", (req, res) => {
   });
 });
 
-app.use((err, _req, res, _next) => {
-  if (err instanceof multer.MulterError) {
-      console.log('101: ' + err);
+// app.use((err, _req, res, _next) => {
+//   if (err instanceof multer.MulterError) {
+//       console.log('101: ' + err);
 
-    return res.status(400).json({ error: err.message });
-  }
-  if (err && err.message === "Unsupported file type") {
-          console.log('106: ' + err);
+//     return res.status(400).json({ error: err.message });
+//   }
+//   if (err && err.message === "Unsupported file type") {
+//           console.log('106: ' + err);
 
-    return res.status(415).json({ error: err.message });
-  }
-  if (err) {
-    console.log('111 ' + err);
-  }
-  return res.status(500).json({ error: "File upload failed" });
-});
+//     return res.status(415).json({ error: err.message });
+//   }
+//   if (err) {
+//     console.log('111 ' + err);
+//   }
+//   return res.status(500).json({ error: "File upload failed" });
+// });
 
 export default function startServer() {
 
