@@ -21,11 +21,8 @@ import {
 const app = express();
 const port = 4000;
 
-const _filename   = fileURLToPath(import.meta.url);
-const _dirname    = path.dirname(_filename);
-
 app.use(cors({ origin: true, credentials: true }));
-app.options('*', cors());
+app.options(/^.*$/, cors());
 
 // 2) Let preflight through without auth
 app.use((req, res, next) => {
@@ -38,6 +35,10 @@ app.use(basicAuth({
   users: { 'fortuna': process.env.fortuna },
   challenge: true
 }));
+
+
+const _filename   = fileURLToPath(import.meta.url);
+const _dirname    = path.dirname(_filename);
 
 app.use(express.static(path.join(_dirname, "../public")));
 app.use(bodyParser.json({ limit: "10mb" }));
