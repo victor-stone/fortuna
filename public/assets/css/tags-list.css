@@ -1,0 +1,86 @@
+#tags-list li {
+  padding: 2px 4px 2px 4px;
+  cursor: grab;
+}
+
+#tags-list li:active {
+  cursor: grabbing;
+}
+
+#tags-list .col > .list-group > .list-group-item:first-child.active > span {
+  font-weight: 600;
+}
+
+#tags-list .col > .list-group > .list-group-item:first-child {
+  background-color: var(--bs-primary-bg-subtle);
+}
+
+#tags-list {
+  font-size: small;
+}
+
+#tags-list li span {
+  padding: 0px;
+}
+
+#tags-list .col > .list-group > .list-group-item:first-child > span {
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+#tags-list .col > .list-group {
+  width: 9em;
+}
+
+#tag-drop-target [id$="-drop-target"] {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  min-height: 3rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.15s ease, outline-color 0.15s ease;
+}
+
+#tag-drop-target [id$="-drop-target"].drop-target-hover {
+  outline: 2px dashed var(--bs-primary);
+  background-color: var(--bs-primary-bg-subtle, rgba(13, 110, 253, 0.15));
+}
+
+#tag-drop-target .tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background-color: var(--bs-primary);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+#tag-drop-target .tag-chip-label {
+  pointer-events: none;
+}
+
+#tag-drop-target .tag-chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  color: inherit;
+  font-size: 0.65rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+#tag-drop-target .tag-chip-remove:hover, #tag-drop-target .tag-chip-remove:focus-visible {
+  background: rgba(255, 255, 255, 0.4);
+}
+

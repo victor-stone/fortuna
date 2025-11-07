@@ -1,0 +1,14 @@
+#floating-toolbar {
+  position: fixed;
+  top: 0.3rem;
+  left: 12%;
+  z-index: 1050;
+  cursor: move;
+  user-select: none;
+  opacity: 50%;
+}
+
+#floating-toolbar:hover {
+  opacity: 1;
+}
+

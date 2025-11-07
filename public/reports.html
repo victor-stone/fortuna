@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>fortuna - reporting</title>
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/bss-overrides.css">
+    <link rel="stylesheet" href="assets/css/filters.css">
+    <link rel="stylesheet" href="assets/css/floatable.css">
+    <link rel="stylesheet" href="assets/css/sortable-header.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/tags-list.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-primary-subtle" data-bs-theme="light">
+        <div class="container-fluid"><img class="img-fluid me-2 pe-0" width="16" height="16" src="assets/img/favicon-16x16.png"><a class="navbar-brand d-md-none d-lg-inline-block" href="/">fortuna</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse d-flex justify-content-center" id="navcol-1">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">BROWSE</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/reports.html">REPORTS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="import.html">Import</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rules.html">Rules</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive small" style="font-size: 12px;text-align: right;">
+                    <table class="table table-striped" id="group-by-table">
+                        <thead>
+                            <tr>
+                                <th class="d-flex th-sort" id="group-picker"><select id="report-type">
+                                        <option value="payee">payee</option>
+                                        <option value="tag" selected="">category</option>
+                                    </select><button class="me-0 pe-0 th-btn" type="button" data-sort="name"><span class="d-none"></span><span class="sort-icon asc"></span></button></th>
+                                <th class="column">Jan</th>
+                                <th class="column">Jan</th>
+                                <th class="column">Jan</th>
+                                <th class="column">Jan</th>
+                                <th class="column">Jan</th>
+                                <th class="column">Jan</th>
+                                <th class="column">Jan</th>
+                                <th class="th-sort"><button class="th-btn" type="button" data-sort="sum"><span>Total</span><span class="sort-icon"></span></button></th>
+                                <th class="th-sort"><button class="th-btn" type="button" data-sort="ave"><span>Average</span><span class="sort-icon"></span></button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary summary-row" id="sum-row">
+                                <td class="fw-semibold text-start">Income</td>
+                                <td>$200</td>
+                                <td>$200</td>
+                                <td>$200</td>
+                                <td>$200</td>
+                                <td>$200</td>
+                                <td>$200</td>
+                                <td>$200</td>
+                                <td>$200</td>
+                                <td>$200</td>
+                            </tr>
+                            <tr>
+                                <td class="text-start">tag1</td>
+                                <td>$44</td>
+                                <td>$44</td>
+                                <td>$44</td>
+                                <td>$44</td>
+                                <td>$44</td>
+                                <td>$44</td>
+                                <td>$44</td>
+                                <td>$44</td>
+                                <td>$44</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-body border rounded-3 shadow-sm d-inline-flex align-items-center gap-2 p-2 loating-toolbar small" id="floating-toolbar"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-grip-vertical flex-shrink-0 list-group-columns handle" style="width: 1.5em;height: 1.5em;">
+            <path d="M7 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M7 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M7 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-3 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-3 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"></path>
+        </svg><button class="btn btn-outline-secondary btn-sm" id="toggle-filter" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false" aria-controls="#filters"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor">
+                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+                <path d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"></path>
+            </svg></button>
+        <div class="dropdown" id="picker"><button class="btn btn-primary btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">Dropdown </button>
+            <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+        </div><button class="btn btn-outline-secondary btn-sm" id="do-search" type="button" data-bs-toggle="collapse" data-bs-target="#search-query" aria-expanded="false" aria-controls="#search-query"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" fill="none">
+
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="currentColor"></path>
+            </svg></button><input class="form-control-sm form-control collapse" type="text" id="search-query" name="query" placeholder="search..." size="20">
+    </div>
+    <div class="offcanvas offcanvas-bottom bg-secondary-subtle shadow-none h-75 small" tabindex="-1" id="details-view" style="border-top: 6px groove var(--bs-primary);">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="details-title">Offcanvas Title</h5><button class="btn-close text-bg-primary rounded-3" type="button" aria-label="Close" data-bs-dismiss="offcanvas" data-bs-target="#details-view"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="table-responsive" id="transaction-browser" style="border-radius: 13px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Account</th>
+                            <th class="th-sort"><button class="th-btn" type="button" data-sort="account"><span>Date</span><span class="sort-icon desc"></span></button></th>
+                            <th>
+                                <div class="rounded-2 m-0 transfer-indicator"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-left-right d-inline ratio p-0">
+                                        <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5"></path>
+                                    </svg></div>
+                            </th>
+                            <th class="th-sort"><button class="btn th-btn" type="button" data-sort="payee"><span>Payee</span><span class="sort-icon"></span></button></th>
+                            <th class="th-sort"><button class="btn th-btn" type="button" data-sort="amount"><span>Amount</span><span class="sort-icon"></span></button></th>
+                            <th>Tags</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="template-row" class="small">
+                            <td class="row-account" data-field="account"><button class="btn lh-1 m-0 p-0 me-2" type="button" data-bs-target="#transaction-details" data-bs-toggle="offcanvas"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-code-slash m-0">
+                                        <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"></path>
+                                    </svg></button>$account</td>
+                            <td class="row-date" data-field="date">$date</td>
+                            <td class="text-center row-transfer-indicator" data-field="transfer">
+                                <div class="border-0 m-0 p-0 btn js-transfer" data-bs-toggle="button" aria-pressed="false" type="button" autocomplete="off"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-left-right m-0 p-0 invisible transfer-icon">
+                                        <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5"></path>
+                                    </svg></div>
+                            </td>
+                            <td class="row-payee" data-field="payee">$payee</td>
+                            <td class="pe-4 row-amount currency" data-field="amount">$amount</td>
+                            <td class="row-tags" data-field="tags">$tags</td>
+                            <td class="row-notes" data-field="notes">$notes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal" role="dialog" tabindex="-1" id="tags-editor">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-secondary-emphasis d-flex flex-row">
+                    <h4 class="modal-title flex-fill">Categories</h4>
+                    <div class="d-flex flex-grow-0 gap-3 me-3"><select class="form-select-sm" id="presets">
+                            <option value="clear">Clear</option>
+                        </select><button class="btn btn-sm" type="button" style="padding: 0;line-height: 0px;" data-bs-toggle="collapse" data-bs-target="#tag-edit-group"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-gear-fill lh-sm">
+                                <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"></path>
+                            </svg></button>
+                        <div class="btn-group collapse" role="group" id="tag-edit-group"><button class="btn btn-sm border-1 border-primary-subtle" id="presets-save" type="button" style="padding: 0;line-height: 0px;padding-right: 6px;padding-left: 6px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-save2-fill lh-sm">
+                                    <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2z"></path>
+                                </svg></button><button class="btn btn-sm border-1 border-primary-subtle" id="presets-update" type="button" style="padding: 0;line-height: 0px;padding-right: 6px;padding-left: 6px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-pencil-fill lh-sm">
+                                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"></path>
+                                </svg></button><button class="btn btn-sm border-1 border-primary-subtle" id="presets-delete" type="button" style="padding: 0;line-height: 0px;padding-right: 6px;padding-left: 6px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-trash2-fill lh-sm text-danger">
+                                    <path d="M2.037 3.225A.703.703 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2a.702.702 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671L2.037 3.225zm9.89-.69C10.966 2.214 9.578 2 8 2c-1.58 0-2.968.215-3.926.534-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466-.18-.14-.498-.307-.975-.466z"></path>
+                                </svg></button></div>
+                    </div><button class="btn-close text-success-emphasis text-bg-dark" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container" id="tags-list">
+                        <div class="row gap-2">
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span>(location)</span>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><span>uruguay</span></li>
+                                            <li class="list-group-item"><span>palm springs</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span>income</span>
+                                        <ul class="list-group" style="border-style: none;">
+                                            <li class="list-group-item"><span>rental</span></li>
+                                            <li class="list-group-item"><span>dst</span></li>
+                                            <li class="list-group-item"><span>ssi</span></li>
+                                            <li class="list-group-item"><span>investment</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span>travel</span>
+                                        <ul class="list-group" style="border-style: none;">
+                                            <li class="list-group-item"><span>air</span></li>
+                                            <li class="list-group-item"><span>ground</span></li>
+                                            <li class="list-group-item"><span>hotel</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span>utilities</span>
+                                        <ul class="list-group" style="border-style: none;">
+                                            <li class="list-group-item"><span>gas</span></li>
+                                            <li class="list-group-item"><span>water</span></li>
+                                            <li class="list-group-item"><span>electricity</span></li>
+                                            <li class="list-group-item"><span>internet</span></li>
+                                            <li class="list-group-item"><span>digital</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span>personal</span>
+                                        <ul class="list-group" style="border-style: none;">
+                                            <li class="list-group-item"><span>gift</span></li>
+                                            <li class="list-group-item"><span>joan</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span>home maintainence</span>
+                                        <ul class="list-group" style="border-style: none;">
+                                            <li class="list-group-item"><span>pool</span></li>
+                                            <li class="list-group-item"><span>landscape</span></li>
+                                            <li class="list-group-item"><span>trash</span></li>
+                                            <li class="list-group-item"><span>property manager</span></li>
+                                            <li class="list-group-item"><span>alarm</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span>(investing)</span>
+                                        <ul class="list-group" style="border-style: none;">
+                                            <li class="list-group-item"><span>accounting</span></li>
+                                            <li class="list-group-item"><span>advisor</span></li>
+                                            <li class="list-group-item"><span>mortgage</span></li>
+                                            <li class="list-group-item"><span>irs</span></li>
+                                            <li class="list-group-item"><span>refund</span></li>
+                                            <li class="list-group-item"><span>tax</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span>(money)</span>
+                                        <ul class="list-group" style="border-style: none;">
+                                            <li class="list-group-item"><span>bank fee</span></li>
+                                            <li class="list-group-item"><span>financial fee</span></li>
+                                            <li class="list-group-item"><span>penalty</span></li>
+                                            <li class="list-group-item"><span>cash</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span>(lifestyle)</span>
+                                        <ul class="list-group" style="border-style: none;">
+                                            <li class="list-group-item"><span>music</span></li>
+                                            <li class="list-group-item"><span>personal care</span></li>
+                                            <li class="list-group-item"><span>entertainment</span></li>
+                                            <li class="list-group-item"><span>clothing</span></li>
+                                            <li class="list-group-item"><span>dining</span></li>
+                                            <li class="list-group-item"><span>donation</span></li>
+                                            <li class="list-group-item"><span>education</span></li>
+                                            <li class="list-group-item"><span>medical</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span>household</span>
+                                        <ul class="list-group" style="border-style: none;">
+                                            <li class="list-group-item"><span>car</span></li>
+                                            <li class="list-group-item"><span>groceries</span></li>
+                                            <li class="list-group-item"><span>furnishing</span></li>
+                                            <li class="list-group-item"><span>gasoline</span></li>
+                                            <li class="list-group-item"><span>home repair</span></li>
+                                            <li class="list-group-item"><span>insurance</span></li>
+                                            <li class="list-group-item"><span>home maintenance</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container border rounded-2 mt-3 py-3" id="tag-drop-target">
+                        <div class="row mt-0 pt-0">
+                            <div class="col">
+                                <h5 class="fs-6 fw-semibold">Any of these</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="fs-6 fw-semibold">Must have these</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="fs-6 fw-semibold">Exclude these</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="height: 90px;">
+                                <div id="or-drop-target" style="width: 100%;height: 100%;background: var(--bs-gray-100);"></div>
+                            </div>
+                            <div class="col">
+                                <div id="and-drop-target" style="width: 100%;height: 100%;background: var(--bs-gray-100);"></div>
+                            </div>
+                            <div class="col">
+                                <div id="not-drop-target" style="width: 100%;height: 100%;background: var(--bs-gray-100);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas offcanvas-end mt-7 mb-7" tabindex="-1" id="transaction-details" style="height: 366px;">
+        <div class="offcanvas-body d-flex align-items-center m-1 p-0" style="height: 316px;">
+            <div class="container"><pre id="transaction-details-content" style="font-size:60%">
+ {
+      "date": "2025-09-26",
+      "payee": "probably david",
+      "notes": " ",
+      "amount": 17.25,
+      "account": "ItauUYU",
+      "currency": "USD",
+      "peso": 750,
+      "original": {
+        "tags": [
+          "verify"
+        ]
+      },
+      "rules": [
+        "6719d4c5-07fc-4bc1-9f97-02c8205a336c"
+      ],
+      "tags": [
+        "music"
+      ],
+      "timestamp": "2025-09-28T13:55:28.658Z",
+      "uuid": "4108ece0-79f0-440d-8535-f4b54ee89e42",
+      "lastEdit": "2025-09-28T14:23:49.442Z"
+    }
+</div></div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/sort.js"></script>
+    <script src="assets/js/clientAPI.js"></script>
+    <script src="assets/js/filters.js"></script>
+    <script src="assets/js/transactions.js"></script>
+    <script src="assets/js/editCell.js"></script>
+    <script src="assets/js/presets.js"></script>
+    <script src="assets/js/tagsEditor.js"></script>
+    <script src="assets/js/rules.js"></script>
+    <script src="assets/js/import.js"></script>
+    <script src="assets/js/groupBy/payee.js"></script>
+    <script src="assets/js/groupBy/tags.js"></script>
+    <script src="assets/js/groupBy.js"></script>
+    <script src="assets/js/fortuna.js"></script>
+    <script src="assets/js/draggable.js"></script>
+</body>
+
+</html>

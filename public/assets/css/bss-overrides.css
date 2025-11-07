@@ -1,0 +1,83 @@
+:root, [data-bs-theme=light] {
+  --bs-body-font-family: avenir next;
+}
+
+.m-0 {
+  margin: 0!important;
+}
+
+.m-1 {
+  margin: .25rem!important;
+}
+
+.mx-4 {
+  margin-right: 1.5rem!important;
+  margin-left: 1.5rem!important;
+}
+
+.mx-6 {
+  margin-left: 4.5rem !important;
+  margin-right: 4.5rem !important;
+}
+
+.my-3 {
+  margin-top: 1rem!important;
+  margin-bottom: 1rem!important;
+}
+
+.mt-0 {
+  margin-top: 0!important;
+}
+
+.mt-1 {
+  margin-top: .25rem!important;
+}
+
+.mt-3 {
+  margin-top: 1rem!important;
+}
+
+.mt-4 {
+  margin-top: 1.5rem!important;
+}
+
+.mt-7 {
+  margin-top: 6rem !important;
+}
+
+.me-0 {
+  margin-right: 0!important;
+}
+
+.me-2 {
+  margin-right: .5rem!important;
+}
+
+.me-3 {
+  margin-right: 1rem!important;
+}
+
+.mb-0 {
+  margin-bottom: 0!important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem!important;
+}
+
+.mb-7 {
+  margin-bottom: 6rem !important;
+}
+
+.ms-0 {
+  margin-left: 0!important;
+}
+
+.ms-3 {
+  margin-left: 1rem!important;
+}
+
+.ms-auto {
+  margin-left: auto!important;
+}
+

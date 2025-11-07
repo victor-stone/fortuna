@@ -1,0 +1,52 @@
+/* Animate the actual transition phase */
+
+#filters.collapsing {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.25s ease;
+}
+
+/* After fully shown */
+
+#filters.collapse.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.25s ease;
+}
+
+/* Optional (starting hidden state) */
+
+#filters.collapse {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* ************************ */
+
+#search-query.collapsing {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.25s ease;
+}
+
+/* After fully shown */
+
+#search-query.collapse.show {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.25s ease;
+}
+
+/* Optional (starting hidden state) */
+
+#search-query.collapse {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.btn-primary {
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #827f77;
+  --bs-btn-active-border-color: #0a53be;
+}
+
