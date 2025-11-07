@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import basicAuth from 'express-basic-auth';
 import cors from 'cors';
 
+import store from "./data.js";
 import rules from './routes/rules.js';
 import importer from './routes/importer.js'
 import presets from './routes/presets.js';
@@ -52,6 +53,16 @@ app.get("/api/transactions", (req, res) => {
   try {
     const transactions =  getTransactions();
     res.json(transactions);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get("/api/refresh", async (req, res) => {
+  try {
+    await store.loadData();
+    res.status(200).json({ message: "Data is refreshed" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });

@@ -14,4 +14,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   if( typeof initGroupByTable === "function" ) 
     initGroupByTable();
   await initRulesTable();
+  initDataRefresh();
 });

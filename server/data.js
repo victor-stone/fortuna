@@ -9,17 +9,15 @@ import { readJson, writeJson } from './lib/s3data.js';
 class Store {
 
     constructor() {
-        // this.filePath = path.resolve(currDirname, './db.json');
         this.loadData().then( data => {
-            console.log('data loaded from s3');
             this.data = data;
         })
     }
 
     async loadData() {
         try {
-            // const fileData = fs.readFileSync(this.filePath, 'utf8');
-            const data = await readJson(); // JSON.parse(fileData);
+            const data = await readJson(); 
+            console.log('data loaded from s3');
             return data;
         } catch (error) {
             console.error('Error loading data:', error);
@@ -29,8 +27,6 @@ class Store {
 
     async commit() {
         try {
-            //const jsonData = JSON.stringify(this.data, null, 2);
-            // fs.writeFileSync(this.filePath, jsonData, 'utf8');
             await writeJson(this.data);
         } catch (error) {
             console.error('Error saving data:', error);
