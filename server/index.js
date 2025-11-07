@@ -23,10 +23,10 @@ const port = 4000;
 const _filename   = fileURLToPath(import.meta.url);
 const _dirname    = path.dirname(_filename);
 
-app.use(basicAuth({
-  users: { 'fortuna': process.env.fortuna },
-  challenge: true
-}));
+// app.use(basicAuth({
+//   users: { 'fortuna': process.env.fortuna },
+//   challenge: true
+// }));
 app.use(express.static(path.join(_dirname, "../public")));
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "10mb" }));
