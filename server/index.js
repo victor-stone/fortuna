@@ -32,7 +32,7 @@ presets(app);
 
 app.get("/api/transactions", (req, res) => {
   try {
-    const transactions = getTransactions();
+    const transactions =  getTransactions();
     res.json(transactions);
   } catch (error) {
     console.log(error);
@@ -115,21 +115,23 @@ app.use((err, _req, res, _next) => {
 
 export default function startServer() {
 
-  function getLocalIP() {
-    const nets = os.networkInterfaces();
-    for (const name of Object.keys(nets)) {
-      for (const net of nets[name]) {
-        if (net.family === "IPv4" && !net.internal) {
-          return net.address;
-        }
-      }
-    }
-    return "127.0.0.1";
-  }  
-  const localIP = getLocalIP();
-  app.listen(port, localIP, () => {
-    console.log(`Server running at http://${localIP}:${port}`);
-  });
+  // function getLocalIP() {
+  //   const nets = os.networkInterfaces();
+  //   for (const name of Object.keys(nets)) {
+  //     for (const net of nets[name]) {
+  //       if (net.family === "IPv4" && !net.internal) {
+  //         return net.address;
+  //       }
+  //     }
+  //   }
+  //   return "127.0.0.1";
+  // }  
+  // const localIP = getLocalIP();
+  // app.listen(port, localIP, () => {
+  //   console.log(`Server running at http://${localIP}:${port}`);
+  // });
+
+  app.listen(4000, '0.0.0.0', () => console.log('server running on port 4000'));  
 }
 
 process.on('unhandledRejection', (reason) => {
