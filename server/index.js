@@ -22,7 +22,7 @@ const app = express();
 const port = 4000;
 
 app.use(cors({ origin: true, credentials: true }));
-app.options(/^.*$/, cors());
+app.options('/(.*)', cors());
 
 // 2) Let preflight through without auth
 app.use((req, res, next) => {
