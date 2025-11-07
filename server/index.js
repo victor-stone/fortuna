@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 
 // 3) THEN basic auth
 app.use(basicAuth({
-  users: { 'fortuna': process.env.fortuna },
+  users: { 'fortuna': process.env.FORTUNA },
   challenge: true
 }));
 
