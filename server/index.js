@@ -152,11 +152,14 @@ export default function startServer() {
   app.listen(4000, '0.0.0.0', () => console.log('server running on port 4000'));  
 }
 
-process.on('unhandledRejection', (reason) => {
-  console.error('Unhandled Rejection:', reason);
-});
-process.on('uncaughtException', (err) => {
-  console.error('Uncaught Exception:', err);
-  // Optionally process.exit(1) after logging & cleanup
-});
+// process.on('unhandledRejection', (reason) => {
+//   console.error('Unhandled Rejection:', reason);
+// });
+// process.on('uncaughtException', (err) => {
+//   console.error('Uncaught Exception:', err);
+//   // Optionally process.exit(1) after logging & cleanup
+// });
+
+app.use((err, req, res, next) => { console.error(err.stack || err); res.status(500).json({ error: 'internal' }); });
+
 startServer();
