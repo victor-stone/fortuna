@@ -32,7 +32,7 @@ function server() {
     const response = await fetch(url, {
       ...options,
       headers,
-      credentials: true
+      credentials: 'include'
     });
     
     // Parse the response based on the parseAsJson flag
