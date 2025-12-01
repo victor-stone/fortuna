@@ -1,10 +1,4 @@
-// import path from 'path';
-// import fs from 'fs';
-import { fileURLToPath } from "url";
 import { readJson, writeJson } from './lib/s3data.js';
-
-// const currFileName = fileURLToPath(import.meta.url);
-// const currDirname  = path.dirname(currFileName);
 
 class Store {
 

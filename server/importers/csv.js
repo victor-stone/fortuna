@@ -7,7 +7,7 @@ export function parseQuicken(inputFilePath, _, log) {
         fs.createReadStream(inputFilePath)
             .pipe(csvParser())
             .on("data", (row) => {
-                results.push({
+                row.state !== 'PENDING' && results.push({
                     account: row.account,
                     amount: row.amount 
                         ? parseFloat(row.amount.replace(/[^0-9.-]+/g, "")) 
